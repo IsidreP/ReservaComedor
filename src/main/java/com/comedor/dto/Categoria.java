@@ -22,7 +22,7 @@ public class Categoria {
 	//Atributos de entidad curso
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)//busca ultimo valor e incrementa desde id final de db
-	private int id;
+	private int idCategoria;
 	@Column(name = "nombreCategoria")//no hace falta si se llama igual
 	private String nombreCategoria;
 	
@@ -40,19 +40,23 @@ public class Categoria {
 	 * @param id
 	 * @param nombreCategoria
 	 */
-	public Categoria(int id, String nombreCategoria, List<Plato> plato) {
+	public Categoria(int idCategoria, String nombreCategoria, List<Plato> plato) {
 		super();
-		this.id = id;
+		this.idCategoria = idCategoria;
 		this.nombreCategoria = nombreCategoria;
 		this.plato = plato;
 	}
+	
+	
 
-	public int getId() {
-		return id;
+	//Setters & Getters
+
+	public int getIdCategoria() {
+		return idCategoria;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setIdCategoria(int idCategoria) {
+		this.idCategoria = idCategoria;
 	}
 
 	public String getNombreCategoria() {
@@ -78,12 +82,15 @@ public class Categoria {
 	public void setPlato(List<Plato> plato) {
 		this.plato = plato;
 	}
-	
 
+	
 	@Override
 	public String toString() {
-		return "Categoria [id=" + id + ", nombreCategoria=" + nombreCategoria + ", plato=" + plato + "]";
+		return "Categoria [idCategoria=" + idCategoria + ", nombreCategoria=" + nombreCategoria + ", plato=" + plato
+				+ "]";
 	}
+	
+
 
 
 

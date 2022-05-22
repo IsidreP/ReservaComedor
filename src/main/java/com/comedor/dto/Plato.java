@@ -14,13 +14,13 @@ import com.comedor.dto.Categoria;
 import com.comedor.dto.PedirPlato;
 
 @Entity
-@Table(name="plato")//en caso que la tabala sea diferente
+@Table(name="platos")//en caso que la tabala sea diferente
 public class Plato {
 	
 	//Atributos de entidad registro_curso
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)//busca ultimo valor e incrementa desde id final de db
-	private int id;
+	private int idPlato;
 	
 	@OneToMany
     @JoinColumn(name = "idPedirPlato")
@@ -48,8 +48,8 @@ public class Plato {
 	
 	}
 
-	public Plato(int id, PedirPlato pedirPlato, Categoria categoria, String nombrePlato, String descripcionPlato, String imagenPlato, float precioPlato) {
-		this.id = id;
+	public Plato(int idPlato, PedirPlato pedirPlato, Categoria categoria, String nombrePlato, String descripcionPlato, String imagenPlato, float precioPlato) {
+		this.idPlato = idPlato;
 		this.pedirPlato = pedirPlato;
 		this.categoria = categoria;
 		this.nombrePlato = nombrePlato;
@@ -62,15 +62,14 @@ public class Plato {
 	//Getters y Setters
 	
 	
-
-	public int getId() {
-		return id;
+	public int getIdPlato() {
+		return idPlato;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setIdPlato(int idPlato) {
+		this.idPlato = idPlato;
 	}
-	
+
 	public PedirPlato getPedirPlato() {
 		return pedirPlato;
 	}
@@ -118,13 +117,16 @@ public class Plato {
 	public void setPrecioPlato(float precioPlato) {
 		this.precioPlato = precioPlato;
 	}
+	
 
 	@Override
 	public String toString() {
-		return "Plato [id=" + id + ", pedirPlato=" + pedirPlato + ", categoria=" + categoria + ", nombrePlato="
-				+ nombrePlato + ", descripcionPlato=" + descripcionPlato + ", imagenPlato=" + imagenPlato
-				+ ", precioPlato=" + precioPlato + "]";
+		return "Plato [idPlato=" + idPlato + ", pedirPlato=" + pedirPlato + ", categoria=" + categoria
+				+ ", nombrePlato=" + nombrePlato + ", descripcionPlato=" + descripcionPlato + ", imagenPlato="
+				+ imagenPlato + ", precioPlato=" + precioPlato + "]";
 	}
+
+
 
 	
 	
