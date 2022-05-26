@@ -1,5 +1,12 @@
 package com.comedor.dao;
 
-public interface IRolDAO {
+import org.springframework.data.jpa.repository.JpaRepository;
 
+import comedor.dto.Rol;
+
+
+
+public interface IRolDAO extends JpaRepository<Rol, Integer>{
+	
+		
 }
