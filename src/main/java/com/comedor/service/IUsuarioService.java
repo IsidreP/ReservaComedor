@@ -1,23 +1,23 @@
 package com.comedor.service;
 
 import java.util.List;
-
-
-import comedor.dto.Usuario;
-
+import com.comedor.dto.Usuario;
 
 public interface IUsuarioService {
 
-	//Metodos del CRUD
-	public List< Usuario> listarUsuarios(); 
-	
-	public  Usuario guardarUsuarios(Usuario usuarios);	
-	
-	public  Usuario  UsuariosXID(int id); 
-	
-	public  Usuario actualizarUsuarios(Usuario usuarios); 
-	
-	public void eliminarUsuarios(int id);
-	
+	// READ todos usuarios
+	public List<Usuario> listarUsuarios();
+
+	// CREATE nuevo usuario
+	public Usuario guardarUsuario(Usuario usuario);
+
+	// READ usuario por id
+	public Usuario listarUsuarioXID(Long idUsuario);
+
+	// UPDATE usuario
+	public Usuario actualizarUsuario(Usuario usuario);
+
+	// DELETE usuario
+	public void eliminarUsuario(Long idUsuario);
 	
 }

@@ -1,57 +1,41 @@
 package com.comedor.service;
 
 import java.util.List;
-
-
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import comedor.dao.UsuarioDAO;
-import comedor.dto.Usuario;
-
-
-
-
+import com.comedor.dao.IUsuarioDAO;
+import com.comedor.dto.Usuario;
 
 @Service
-public class  UsuarioServiceImpl implements UsuarioService{
-	
+public class  UsuarioServiceImpl implements IUsuarioService{
 	
 	@Autowired
-	UsuarioDAO UsuariosDAO;
-	
+	IUsuarioDAO iUsuariosDAO;
+
 	@Override
 	public List<Usuario> listarUsuarios() {
-		
-		return UsuariosDAO.findAll();
+		return iUsuariosDAO.findAll() ;
 	}
 
 	@Override
-	public Usuario guardarUsuarios(Usuario usuarios) {
-		
-		return UsuariosDAO.save(usuarios);
+	public Usuario guardarUsuario(Usuario usuario) {
+		return iUsuariosDAO.save(usuario);
 	}
 
 	@Override
-	public Usuario UsuariosXID(int id) {
+	public Usuario listarUsuarioXID(Long idUsuario) {
+		return iUsuariosDAO.findById(idUsuario).get();
+	}
+
+	@Override
+	public Usuario actualizarUsuario(Usuario usuario) {
+		return iUsuariosDAO.save(usuario);
+	}
+
+	@Override
+	public void eliminarUsuario(Long idUsuario) {
+		iUsuariosDAO.deleteById(idUsuario);
 		
-		return UsuariosDAO.findById(id).get();
 	}
 	
-
-	@Override
-	public Usuario actualizarUsuarios(Usuario usuarios) {
-		
-		return UsuariosDAO.save(usuarios);
-	}
-
-	@Override
-	public void eliminarUsuarios(int id) {
-		
-		UsuariosDAO.deleteById(id);
-		
-	}
-
 }

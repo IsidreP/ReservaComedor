@@ -41,9 +41,7 @@ public class CategoriaController {
 		Categoria Categoria_xid= new Categoria();
 		
 		Categoria_xid=categoriaServiceImpl.categoriaXID(id);
-		
-		//System.out.println("Categoria XID: "+Categoria_xid);
-		
+	
 		return Categoria_xid;
 	}
 	
@@ -56,10 +54,9 @@ public class CategoriaController {
 		Categoria_seleccionado= categoriaServiceImpl.categoriaXID(id);
 		
 		Categoria_seleccionado.setNombreCategoria(categoria.getNombreCategoria());
+		Categoria_seleccionado.setPlato(categoria.getPlato()); // AÑADIDO
 		
 		Categoria_actualizado = categoriaServiceImpl.actualizarCategoria(Categoria_seleccionado);
-		
-		//System.out.println("El Curso actualizado es: "+ Curso_actualizado);
 		
 		return Categoria_actualizado;
 	}

@@ -20,20 +20,20 @@ public class Franja {
 	// atributos
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idFranja")
+	@Column(name = "id")
 	private Long idFranja;
 
-	@Column(name = "inicioFranja")
+	@Column(name = "inicio")
 	private Time inicioFranja; // importando la librería java.util.Date
 
-	@Column(name = "finFranja")
+	@Column(name = "fin")
 	private Time finFranja;
 
-	@Column(name = "ocupacionMaxima")
+	@Column(name = "ocupacion")
 	private int ocupacionMaxima;
 
 	@OneToMany
-	@JoinColumn(name = "idFranja")
+	@JoinColumn(name = "id")
 	private List<PedirPlato> pedirPlato;
 
 	// constructores
@@ -92,7 +92,7 @@ public class Franja {
 		this.pedirPlato = pedirPlato;
 	}
 
-	// métodotoString
+	// método toString
 	@Override
 	public String toString() {
 		return "Franja [idFranja=" + idFranja + ", inicioFranja=" + inicioFranja + ", finFranja=" + finFranja

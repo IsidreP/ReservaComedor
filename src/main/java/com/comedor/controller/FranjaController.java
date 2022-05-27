@@ -30,16 +30,16 @@ public class FranjaController {
 		return franjaServiceImpl.guardarFranja(franja);
 	}
 
-	@GetMapping("/franjas/{idFranja}")
-	public Franja listarFranjaPorId(@PathVariable(name = "idFranja") Long idFranja) {
+	@GetMapping("/franjas/{id}")
+	public Franja listarFranjaPorId(@PathVariable(name = "id") Long idFranja) {
 
 		Franja franjaPorId = new Franja();
 		franjaPorId = franjaServiceImpl.listarFranjaXID(idFranja);
 		return franjaPorId;
 	}
 
-	@PutMapping("/franjas/{idFranja}")
-	public Franja actualizarFranja(@RequestBody Franja franja, @PathVariable(name = "idFranja") Long idFranja) {
+	@PutMapping("/franjas/{id}")
+	public Franja actualizarFranja(@RequestBody Franja franja, @PathVariable(name = "id") Long idFranja) {
 
 		Franja franjaSeleccionada = new Franja();
 		Franja franjaActualizada = new Franja();
@@ -59,8 +59,8 @@ public class FranjaController {
 		return franjaActualizada;
 	}
 
-	@DeleteMapping("/franjas/{idFranjas}")
-	public void eliminarFranja(@PathVariable(name = "idFranja") Long idFranja) {
+	@DeleteMapping("/franjas/{id}")
+	public void eliminarFranja(@PathVariable(name = "id") Long idFranja) {
 		franjaServiceImpl.eliminarFranja(idFranja);
 	}
 

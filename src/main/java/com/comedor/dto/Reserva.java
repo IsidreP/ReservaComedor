@@ -17,17 +17,17 @@ public class Reserva {
 	// atributos
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idReserva")
+	@Column(name = "id")
 	private Long idReserva;
 
-	@Column(name = "fechaReservada")
+	@Column(name = "fecha")
 	private Date fechaReservada; 
 
-	@Column(name = "precioTotal")
+	@Column(name = "importe")
 	private float precioTotal;
 
 	@ManyToOne
-	@JoinColumn(name = "idPedirPlato")
+	@JoinColumn(name = "pedirplato")
 	PedirPlato pedirPlato;
 
 	// constructores

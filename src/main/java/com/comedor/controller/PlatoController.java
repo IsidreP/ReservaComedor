@@ -36,43 +36,39 @@ public class PlatoController {
 	
 	
 	@GetMapping("/platos/{id}")
-	public Plato PlatoXID(@PathVariable(name="id") int id) {
+	public Plato PlatoXID(@PathVariable(name="id") int idPlato) {
 		
 		Plato Plato_xid= new Plato();
 		
-		Plato_xid=platoServiceImpl.platoXID(id);
-		
-		//System.out.println("Plato XID: "+Plato_xid);
-		
+		Plato_xid=platoServiceImpl.platoXID(idPlato);
+	
 		return Plato_xid;
 	}
 	
 	@PutMapping("/platos/{id}")
-	public Plato actualizarPlato(@PathVariable(name="id")int id,@RequestBody Plato Plato) {
+	public Plato actualizarPlato(@PathVariable(name="id")int idPlato, @RequestBody Plato Plato) {
 		
 		Plato Plato_seleccionado= new Plato();
 		Plato Plato_actualizado= new Plato();
 		
-		Plato_seleccionado= platoServiceImpl.platoXID(id);
+		Plato_seleccionado= platoServiceImpl.platoXID(idPlato);
 		
 		
 		Plato_seleccionado.setCategoria(Plato.getCategoria());
-		Plato_seleccionado.setPedirPlato(Plato.getPedirPlato());
 		Plato_seleccionado.setNombrePlato(Plato.getNombrePlato());
 		Plato_seleccionado.setDescripcionPlato(Plato.getDescripcionPlato());
 		Plato_seleccionado.setImagenPlato(Plato.getImagenPlato());
 		Plato_seleccionado.setPrecioPlato(Plato.getPrecioPlato());
+		Plato_seleccionado.setPedirPlato(Plato.getPedirPlato());
 		
 		Plato_actualizado = platoServiceImpl.actualizarPlato(Plato_seleccionado);
-		
-		//System.out.println("El Plato actualizado es: "+ Plato_actualizado);
 		
 		return Plato_actualizado;
 	}
 	
 	@DeleteMapping("/platos/{id}")
-	public void eleiminarPlato(@PathVariable(name="id")int id) {
-		platoServiceImpl.eliminarPlato(id);
+	public void eleiminarPlato(@PathVariable(name="id")int idPlato) {
+		platoServiceImpl.eliminarPlato(idPlato);
 	}
 	
 }

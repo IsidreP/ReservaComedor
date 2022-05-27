@@ -1,7 +1,10 @@
 package com.comedor.dto;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -10,80 +13,62 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.comedor.dto.Categoria;
-import com.comedor.dto.PedirPlato;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="platos")//en caso que la tabala sea diferente
+@Table(name = "platos")
 public class Plato {
-	
-	//Atributos de entidad registro_curso
+
+	// atributos
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)//busca ultimo valor e incrementa desde id final de db
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id") // FALTABA
 	private int idPlato;
-	
-	@OneToMany
-    @JoinColumn(name = "idPedirPlato")
-	PedirPlato pedirPlato;
- 
-    @ManyToOne
-    @JoinColumn(name = "idCategoria")
-    Categoria categoria;
-	
-	@Column(name = "nombrePlato")//no hace falta si se llama igual
+
+	@Column(name = "nombre")
 	private String nombrePlato;
-	
-	@Column(name = "descripcionPlato")//no hace falta si se llama igual
+
+	@Column(name = "descripcion")
 	private String descripcionPlato;
-	
-	@Column(name = "imagenPlato")//no hace falta si se llama igual
+
+	@Column(name = "imagen")
 	private String imagenPlato;
-	
-	@Column(name = "precioPlato")//no hace falta si se llama igual
+
+	@Column(name = "precio")
 	private float precioPlato;
-	
-	//Constructores
-	
+
+	@OneToMany
+	@JoinColumn(name = "id") 
+	private List<PedirPlato> pedirPlato;
+
+	@ManyToOne
+	@JoinColumn(name = "categoria")
+	Categoria categoria;
+
+	// constructores
 	public Plato() {
-	
+
 	}
 
-	public Plato(int idPlato, PedirPlato pedirPlato, Categoria categoria, String nombrePlato, String descripcionPlato, String imagenPlato, float precioPlato) {
+	public Plato(int idPlato, String nombrePlato, String descripcionPlato, String imagenPlato, float precioPlato,
+			List<PedirPlato> pedirPlato, Categoria categoria) {
+
 		this.idPlato = idPlato;
-		this.pedirPlato = pedirPlato;
-		this.categoria = categoria;
 		this.nombrePlato = nombrePlato;
 		this.descripcionPlato = descripcionPlato;
 		this.imagenPlato = imagenPlato;
 		this.precioPlato = precioPlato;
+		this.pedirPlato = pedirPlato;
+		this.categoria = categoria;
 	}
 
-
-	//Getters y Setters
-	
-	
+	// getters y setters
 	public int getIdPlato() {
 		return idPlato;
 	}
 
 	public void setIdPlato(int idPlato) {
 		this.idPlato = idPlato;
-	}
-
-	public PedirPlato getPedirPlato() {
-		return pedirPlato;
-	}
-
-	public void setPedirPlato(PedirPlato pedirPlato) {
-		this.pedirPlato = pedirPlato;
-	}
-
-	public Categoria getCategoria() {
-		return categoria;
-	}
-
-	public void setCategoria(Categoria categoria) {
-		this.categoria = categoria;
 	}
 
 	public String getNombrePlato() {
@@ -117,19 +102,23 @@ public class Plato {
 	public void setPrecioPlato(float precioPlato) {
 		this.precioPlato = precioPlato;
 	}
-	
 
-	@Override
-	public String toString() {
-		return "Plato [idPlato=" + idPlato + ", pedirPlato=" + pedirPlato + ", categoria=" + categoria
-				+ ", nombrePlato=" + nombrePlato + ", descripcionPlato=" + descripcionPlato + ", imagenPlato="
-				+ imagenPlato + ", precioPlato=" + precioPlato + "]";
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "PedirPlato")
+	public List<PedirPlato> getPedirPlato() {
+		return pedirPlato;
 	}
 
+	public void setPedirPlato(List<PedirPlato> pedirPlato) {
+		this.pedirPlato = pedirPlato;
+	}
 
+	public Categoria getCategoria() {
+		return categoria;
+	}
 
-	
-	
-	
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
 
 }

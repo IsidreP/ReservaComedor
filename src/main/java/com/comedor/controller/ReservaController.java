@@ -31,16 +31,16 @@ public class ReservaController {
 		return reservaServiceImpl.guardarReserva(reserva);
 	}
 
-	@GetMapping("/reservas/{idReserva}")
-	public Reserva listarReservaPorId(@PathVariable(name = "idReserva") Long idReserva) {
+	@GetMapping("/reservas/{id}")
+	public Reserva listarReservaPorId(@PathVariable(name = "id") Long idReserva) {
 
 		Reserva reservaPorId = new Reserva();
 		reservaPorId = reservaServiceImpl.listarReservaXID(idReserva);
 		return reservaPorId;
 	}
 
-	@PutMapping("/reservas/{idReserva}")
-	public Reserva actualizarReserva(@RequestBody Reserva reserva, @PathVariable(name = "idReserva") Long idReserva) {
+	@PutMapping("/reservas/{id}")
+	public Reserva actualizarReserva(@RequestBody Reserva reserva, @PathVariable(name = "id") Long idReserva) {
 
 		Reserva reservaSeleccionada = new Reserva();
 		Reserva reservaActualizada = new Reserva();
@@ -60,8 +60,8 @@ public class ReservaController {
 		return reservaActualizada;
 	}
 
-	@DeleteMapping("/reservas/{idReservas}")
-	public void eliminarReserva(@PathVariable(name = "idReserva") Long idReserva) {
+	@DeleteMapping("/reservas/{id}")
+	public void eliminarReserva(@PathVariable(name = "id") Long idReserva) {
 		reservaServiceImpl.eliminarReserva(idReserva);
 	}
 

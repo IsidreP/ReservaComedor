@@ -1,7 +1,6 @@
 package com.comedor.dto;
 
 import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,46 +10,38 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.comedor.dto.Plato;
+
 
 @Entity
-@Table(name="categorias")//en caso que la tabala sea diferente
+@Table(name="categorias")
 public class Categoria {
 	
-	//Atributos de entidad curso
+	// atributos
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)//busca ultimo valor e incrementa desde id final de db
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id") 
 	private int idCategoria;
-	@Column(name = "nombreCategoria")//no hace falta si se llama igual
+	
+	@Column(name = "nombre")
 	private String nombreCategoria;
 	
 	@OneToMany
-    @JoinColumn(name="id")
+    @JoinColumn(name="id") 
     private List<Plato> plato;
 	
-	//Constructores
-	
+	// constructores
 	public Categoria() {
 	
 	}
 
-	/**
-	 * @param id
-	 * @param nombreCategoria
-	 */
 	public Categoria(int idCategoria, String nombreCategoria, List<Plato> plato) {
-		super();
 		this.idCategoria = idCategoria;
 		this.nombreCategoria = nombreCategoria;
 		this.plato = plato;
 	}
-	
-	
 
-	//Setters & Getters
-
+	// setters & getters
 	public int getIdCategoria() {
 		return idCategoria;
 	}
@@ -67,33 +58,19 @@ public class Categoria {
 		this.nombreCategoria = nombreCategoria;
 	}
 
-	/**
-	 * @return the registroCurso
-	 */
 	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Plato")
-	public List<Plato> getSuministra() {
+	public List<Plato> getPlato() {
 		return plato;
 	}
 
-	/**
-	 * @param registroCurso the registroCurso to set
-	 */
 	public void setPlato(List<Plato> plato) {
 		this.plato = plato;
 	}
 
-	
 	@Override
 	public String toString() {
-		return "Categoria [idCategoria=" + idCategoria + ", nombreCategoria=" + nombreCategoria + ", plato=" + plato
-				+ "]";
+		return "Categoria [idCategoria=" + idCategoria + ", nombreCategoria=" + nombreCategoria + "]";
 	}
 	
-
-
-
-
-
-
 }

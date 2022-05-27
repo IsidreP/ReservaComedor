@@ -1,94 +1,75 @@
 package com.comedor.dto;
 
 import java.util.List;
-
-
-
-
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-
-
-
 @Entity
-@Table(name="Rol")//en caso que la tabala sea diferente
-
+@Table(name = "roles")
 public class Rol {
 
-	//Atributos de entidad equipo
+	// atributos
 	@Id
-	private int id;
-	@Column(name = "nombreRol")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private Long idRol;
+
+	@Column(name = "nombre")
 	private String nombreRol;
-	
-	//Constructores
-	
+
 	@OneToMany
-    @JoinColumn(name="id")
-    private List<Usuario> usuarios;
-	
+	@JoinColumn(name = "id")
+	private List<Usuario> usuario;
 
-	
+	// constructores
 	public Rol() {
-	
+
 	}
 
-	
-	public Rol(int id, String nombre) {
-		//super();
-		this.id = id;
-		this.nombreRol = nombre;
-			
+	public Rol(Long idRol, String nombreRol) {
+		this.idRol = idRol;
+		this.nombreRol = nombreRol;
 	}
 
-
-	public int getId() {
-		return id;
+	// getters y setters
+	public Long getIdRol() {
+		return idRol;
 	}
 
-
-	public void setId(int id) {
-		this.id = id;
+	public void setIdRol(Long idRol) {
+		this.idRol = idRol;
 	}
-
 
 	public String getNombreRol() {
 		return nombreRol;
 	}
 
-
 	public void setNombreRol(String nombreRol) {
 		this.nombreRol = nombreRol;
 	}
 
-
-	public void setUsuarios(List<Usuario> usuarios) {
-		this.usuarios = usuarios;
-	}
-
-
 	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Usuarios")
-	public List<Usuario> getUsuarios() {
-		return usuarios;
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Usuario")
+	public List<Usuario> getUsuario() {
+		return usuario;
 	}
 
+	public void setUsuario(List<Usuario> usuario) {
+		this.usuario = usuario;
+	}
+
+	// método toString
 	@Override
 	public String toString() {
-		return "Rol [id=" + id + ", nombreRol=" + nombreRol + ", usuarios=" + usuarios + "]";
+		return "Rol [idRol=" + idRol + ", nombreRol=" + nombreRol + "]";
 	}
-
-
-	
-	
 	
 }

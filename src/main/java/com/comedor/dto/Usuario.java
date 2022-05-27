@@ -1,105 +1,115 @@
 package com.comedor.dto;
 
+import java.util.List;
 import javax.persistence.Column;
-
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="usuarios")//en caso que la tabala sea diferente
+@Table(name = "usuarios")
 public class Usuario {
 
-	//Atributos de entidad cliente
+	// atributos
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)//busca ultimo valor e incrementa desde id final de db
-	private int id;
-	@Column(name = "nombreUsuario")//no hace falta si se llama igual
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private Long idUsuario;
+
+	@Column(name = "nombre")
 	private String nombreUsuario;
-	@Column(name = "email")//no hace falta si se llama igual
+
+	@Column(name = "email")
 	private String email;
-	@Column(name = "contraseña")//no hace falta si se llama igual
-	private String contraseña;
-	
-	//Constructores
-	
+
+	@Column(name = "contrasenya")
+	private String contrasenya;
+
 	@ManyToOne
-    @JoinColumn(name="roles_id")
-    private Rol roles_id;
-	
-	
-	
+	@JoinColumn(name = "rol")
+	Rol rol;
+
+	@OneToMany
+	@JoinColumn(name = "id")
+	private List<PedirPlato> pedirPlato;
+
 	public Usuario() {
-	
+
 	}
 
+	public Usuario(Long idUsuario, String nombreUsuario, String email, String contrasenya, Rol rol,
+			List<PedirPlato> pedirPlato) {
 
-	public Usuario(int id,String nombreUsuario, String email, String contraseña, Rol roles_id) {
-		//super();
-		this.id = id;
+		this.idUsuario = idUsuario;
 		this.nombreUsuario = nombreUsuario;
 		this.email = email;
-		this.contraseña = contraseña;
-		this.roles_id = roles_id;
-		
+		this.contrasenya = contrasenya;
+		this.rol = rol;
+		this.pedirPlato = pedirPlato;
 	}
 
-	public int getId() {
-		return id;
+	public Long getIdUsuario() {
+		return idUsuario;
 	}
 
-
-	public void setId(int id) {
-		this.id = id;
+	public void setIdUsuario(Long idUsuario) {
+		this.idUsuario = idUsuario;
 	}
-
 
 	public String getNombreUsuario() {
 		return nombreUsuario;
 	}
 
-
 	public void setNombreUsuario(String nombreUsuario) {
 		this.nombreUsuario = nombreUsuario;
 	}
-
 
 	public String getEmail() {
 		return email;
 	}
 
-
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
-
-	public String getContraseña() {
-		return contraseña;
+	public String getContrasenya() {
+		return contrasenya;
 	}
 
-
-	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
+	public void setContrasenya(String contrasenya) {
+		this.contrasenya = contrasenya;
 	}
 
-
-	public Rol getRoles_id() {
-		return roles_id;
+	public Rol getRol() {
+		return rol;
 	}
 
-
-	public void setRoles_id(Rol roles_id) {
-		this.roles_id = roles_id;
+	public void setRol(Rol rol) {
+		this.rol = rol;
 	}
+
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "PedirPlato")
+	public List<PedirPlato> getPedirPlato() {
+		return pedirPlato;
+	}
+
+	public void setPedirPlato(List<PedirPlato> pedirPlato) {
+		this.pedirPlato = pedirPlato;
+	}
+
+	// mÃ©todo toString
 	@Override
 	public String toString() {
-		return "Usuarios [id=" + id + ", nombreUsuario=" + nombreUsuario + ", email=" + email + ", contraseña="
-				+ contraseña + ", roles_id=" + roles_id + "]";
+		return "Usuario [idUsuario=" + idUsuario + ", nombreUsuario=" + nombreUsuario + ", email=" + email
+				+ ", contrasenya=" + contrasenya + "]";
 	}
+
 }

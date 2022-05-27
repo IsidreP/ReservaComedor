@@ -16,29 +16,29 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name = "pedirPlato")
+@Table(name = "pedirplato")
 public class PedirPlato {
 
 	// atributos
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idPedirPlato")
+	@Column(name = "id")
 	private Long idPedirPlato;
 
 	@ManyToOne
-	@JoinColumn(name = "idUsuario")
+	@JoinColumn(name = "usuario")
 	Usuario usuario;
 
 	@ManyToOne
-	@JoinColumn(name = "idPlato")
+	@JoinColumn(name = "plato")
 	Plato plato;
 
 	@ManyToOne
-	@JoinColumn(name = "idFranja")
+	@JoinColumn(name = "franja")
 	Franja franja;
 
 	@OneToMany
-	@JoinColumn(name = "idPedirPlato")
+	@JoinColumn(name = "id")
 	private List<Reserva> reserva;
 
 	// constructores

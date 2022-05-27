@@ -4,8 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.comedor.service.IPlatoService;
 import com.comedor.dao.IPlatoDAO;
 import com.comedor.dto.Plato;
 

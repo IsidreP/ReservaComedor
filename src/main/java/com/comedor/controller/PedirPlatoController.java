@@ -30,16 +30,16 @@ public class PedirPlatoController {
 		return pedirPlatoServiceImpl.guardarPedirPlato(pedirPlato);
 	}
 
-	@GetMapping("/pedirPlato/{idPedirPlato}")
-	public PedirPlato listarPedirPlatoPorId(@PathVariable(name = "idPedirPlato") Long idPedirPlato) {
+	@GetMapping("/pedirPlato/{id}")
+	public PedirPlato listarPedirPlatoPorId(@PathVariable(name = "id") Long idPedirPlato) {
 
 		PedirPlato pedirPlatoPorId = new PedirPlato();
 		pedirPlatoPorId = pedirPlatoServiceImpl.listarPedirPlatoXID(idPedirPlato);
 		return pedirPlatoPorId;
 	}
 
-	@PutMapping("/pedirPlato/{idPedirPlato}")
-	public PedirPlato actualizarPedirPlato(@RequestBody PedirPlato pedirPlato, @PathVariable(name = "idPedirPlato") Long idPedirPlato) {
+	@PutMapping("/pedirPlato/{id}")
+	public PedirPlato actualizarPedirPlato(@RequestBody PedirPlato pedirPlato, @PathVariable(name = "id") Long idPedirPlato) {
 
 		PedirPlato pedirPlatoSeleccionado = new PedirPlato();
 		PedirPlato pedirPlatoActualizado = new PedirPlato();
@@ -59,8 +59,8 @@ public class PedirPlatoController {
 		return pedirPlatoActualizado;
 	}
 
-	@DeleteMapping("/pedirPlato/{idPedirPlato}")
-	public void eliminarPedirPlato(@PathVariable(name = "idPedirPlato") Long idPedirPlato) {
+	@DeleteMapping("/pedirPlato/{id}")
+	public void eliminarPedirPlato(@PathVariable(name = "id") Long idPedirPlato) {
 		pedirPlatoServiceImpl.eliminarPedirPlato(idPedirPlato);
 	}
 

@@ -1,52 +1,41 @@
 package com.comedor.service;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import comedor.dao.RolDAO;
-import comedor.dto.Rol;
-
-
+import com.comedor.dao.IRolDAO;
+import com.comedor.dto.Rol;
 
 @Service
-public class RolServiceImpl implements RolService{
-	
-	
+public class RolServiceImpl implements IRolService {
+
 	@Autowired
-	RolDAO RolDAO;
-	
+	IRolDAO iRolDAO;
+
 	@Override
-	public List<Rol> listarRol() {
-		
-		return RolDAO.findAll();
+	public List<Rol> listarRoles() {
+		return iRolDAO.findAll();
 	}
 
 	@Override
-	public Rol guardarRol(Rol roles) {
-		
-		return RolDAO.save(roles);
+	public Rol guardarRol(Rol rol) {
+		return iRolDAO.save(rol);
 	}
 
 	@Override
-	public Rol RolXID(int id) {
-		
-		return RolDAO.findById(id).get();
-	}
-	
-
-	@Override
-	public Rol actualizarRol(Rol roles) {
-		
-		return RolDAO.save(roles);
+	public Rol listarRolXID(Long idRol) {
+		return iRolDAO.findById(idRol).get();
 	}
 
 	@Override
-	public void eliminarRol(int id) {
-		
-		RolDAO.deleteById(id);
-		
+	public Rol actualizarRol(Rol rol) {
+		return iRolDAO.save(rol);
+	}
+
+	@Override
+	public void eliminarRol(Long idRol) {
+		iRolDAO.deleteById(idRol);
+
 	}
 
 }

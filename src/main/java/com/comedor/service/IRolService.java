@@ -1,16 +1,23 @@
 package com.comedor.service;
 
-public interface IRolService {
+import java.util.List;
+import com.comedor.dto.Rol;
 
-	//Metodos del CRUD
-	public List<Rol> listarRol(); 
+public interface IRolService {
 	
-	public Rol guardarRol(Rol roles);	
-	
-	public Rol RolXID(int  id); 
-		
-	public Rol actualizarRol(Rol roles); 
-	
-	public void eliminarRol(int id);
+	// READ todos roles
+	public List<Rol> listarRoles();
+
+	// CREATE nuevo rol
+	public Rol guardarRol(Rol rol);
+
+	// READ rol por id
+	public Rol listarRolXID(Long idRol);
+
+	// UPDATE rol
+	public Rol actualizarRol(Rol rol);
+
+	// DELETE rol
+	public void eliminarRol(Long idRol);
 }
 

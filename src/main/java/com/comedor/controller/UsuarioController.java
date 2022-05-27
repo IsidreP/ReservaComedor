@@ -1,63 +1,69 @@
 package com.comedor.controller;
 
-
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import com.comedor.dto.Usuario;
+import com.comedor.service.UsuarioServiceImpl;
 
 @RestController
 @RequestMapping("/api")
 public class UsuarioController {
-	
+
 	@Autowired
-	UsuarioServiceImpl UsuariosServideImpl;
-	
-	@GetMapping("/usuario")
-	public List<Usuario> listarUsuarios(){
-		return UsuariosServideImpl.listarUsuarios();
+	UsuarioServiceImpl usuarioServiceImpl;
+
+	@GetMapping("/usuarios")
+	public List<Usuario> listarUsuarios() {
+		return usuarioServiceImpl.listarUsuarios();
 	}
-	
-	
-	
-	@PostMapping("/usuario")
-	public Usuario salvarUsuarios(@RequestBody Usuario usuarios) {
-		
-		return UsuariosServideImpl.guardarUsuarios(usuarios);
+
+	@PostMapping("/usuarios")
+	public Usuario guardarUsuario(@RequestBody Usuario usuario) {
+		return usuarioServiceImpl.guardarUsuario(usuario);
 	}
-	
-	
-	@GetMapping("/usuario/{id}")
-	public Usuario reservasXID(@PathVariable(name="id") int id) {
-		
-		Usuario usuarios_xid= new Usuario();
-		
-		usuarios_xid=UsuariosServideImpl.UsuariosXID(id);
-		
-		System.out.println("Usuario XID: "+usuarios_xid);
-		
-		return usuarios_xid;
+
+	@GetMapping("/usuarios/{id}")
+	public Usuario listarUsuarioPorId(@PathVariable(name = "id") Long idUsuario) {
+
+		Usuario usuarioPorId = new Usuario();
+		usuarioPorId = usuarioServiceImpl.listarUsuarioXID(idUsuario);
+		return usuarioPorId;
 	}
-	
-	@PutMapping("/usuario/{id}")
-	public Usuario actualizarUsuarios(@PathVariable(name="id")int id,@RequestBody Usuario usuarios) {
-		
-		Usuario usuarios_seleccionado= new Usuario();
-		Usuario usuarios_actualizado= new  Usuario();
-		
-		usuarios_seleccionado= UsuariosServideImpl.UsuariosXID(id);
-		
-		usuarios_seleccionado.setNombreUsuario(usuarios.getNombreUsuario());
-		usuarios_seleccionado.setEmail(usuarios.getEmail());
-		usuarios_seleccionado.setContraseña(usuarios.getContraseña());
-		usuarios_seleccionado.setRoles_id(usuarios.getRoles_id());
-		usuarios_actualizado = UsuariosServideImpl.actualizarUsuarios(usuarios_actualizado);
-		
-		System.out.println("El Usuario actualizado es: "+ usuarios_actualizado);
-		
-		return usuarios_actualizado;
+
+	@PutMapping("/usuarios/{id}")
+	public Usuario actualizarUsuario(@RequestBody Usuario usuario, @PathVariable(name = "id") Long idUsuario) {
+
+		Usuario usuarioSeleccionado = new Usuario();
+		Usuario usuarioActualizado = new Usuario();
+
+		// obtenemos usuario de la DB
+		usuarioSeleccionado = usuarioServiceImpl.listarUsuarioXID(idUsuario);
+
+		// seteamos nuevos valores
+		usuarioSeleccionado.setIdUsuario(usuario.getIdUsuario());
+		usuarioSeleccionado.setNombreUsuario(usuario.getNombreUsuario());
+		usuarioSeleccionado.setEmail(usuario.getEmail());
+		usuarioSeleccionado.setContrasenya(usuario.getContrasenya());
+		usuarioSeleccionado.setRol(usuario.getRol());
+		usuarioSeleccionado.setPedirPlato(usuario.getPedirPlato());
+
+		// actualizamos Usuario en la DB
+		usuarioActualizado = usuarioServiceImpl.actualizarUsuario(usuarioSeleccionado);
+		return usuarioActualizado;
 	}
-	
-	@DeleteMapping("/usuario/{id}")
-	public void eliminarUsuarios(@PathVariable(name="id")int id) {
-		UsuariosServideImpl.eliminarUsuarios(id);
+
+	@DeleteMapping("/usuarios/{id}")
+	public void eliminarUsuario(@PathVariable(name = "id") Long idUsuario) {
+		usuarioServiceImpl.eliminarUsuario(idUsuario);
 	}
-	
-	
+
 }
+
