@@ -22,52 +22,55 @@ public class PlatoController {
 	@Autowired
 	PlatoServiceImpl platoServiceImpl;
 	
+	// listar todos platos
 	@GetMapping("/platos")
 	public List<Plato> listarPlato(){
 		return platoServiceImpl.listarPlato();
 	}
 	
-	
+	// crear nuevo plato
 	@PostMapping("/platos")
 	public Plato salvarPlato(@RequestBody Plato plato) {
 		
 		return platoServiceImpl.guardarPlato(plato);
 	}
 	
-	
+	// listar plato por id
 	@GetMapping("/platos/{id}")
 	public Plato PlatoXID(@PathVariable(name="id") int idPlato) {
 		
-		Plato Plato_xid= new Plato();
-		
-		Plato_xid=platoServiceImpl.platoXID(idPlato);
-	
-		return Plato_xid;
+		Plato plato_xid= new Plato();
+		plato_xid=platoServiceImpl.platoXID(idPlato);
+		return plato_xid;
 	}
 	
+	// actualizar plato
 	@PutMapping("/platos/{id}")
 	public Plato actualizarPlato(@PathVariable(name="id")int idPlato, @RequestBody Plato Plato) {
 		
-		Plato Plato_seleccionado= new Plato();
-		Plato Plato_actualizado= new Plato();
+		Plato plato_seleccionado= new Plato();
+		Plato plato_actualizado= new Plato();
 		
-		Plato_seleccionado= platoServiceImpl.platoXID(idPlato);
+		// obtenemos plato de la DB
+		plato_seleccionado= platoServiceImpl.platoXID(idPlato);
 		
+		// seteamos nuevos valores
+		plato_seleccionado.setCategoria(Plato.getCategoria());
+		plato_seleccionado.setNombrePlato(Plato.getNombrePlato());
+		plato_seleccionado.setDescripcionPlato(Plato.getDescripcionPlato());
+		plato_seleccionado.setImagenPlato(Plato.getImagenPlato());
+		plato_seleccionado.setPrecioPlato(Plato.getPrecioPlato());
+		plato_seleccionado.setPedirPlato(Plato.getPedirPlato());
 		
-		Plato_seleccionado.setCategoria(Plato.getCategoria());
-		Plato_seleccionado.setNombrePlato(Plato.getNombrePlato());
-		Plato_seleccionado.setDescripcionPlato(Plato.getDescripcionPlato());
-		Plato_seleccionado.setImagenPlato(Plato.getImagenPlato());
-		Plato_seleccionado.setPrecioPlato(Plato.getPrecioPlato());
-		Plato_seleccionado.setPedirPlato(Plato.getPedirPlato());
+		// actualizamos plato en la DB
+		plato_actualizado = platoServiceImpl.actualizarPlato(plato_seleccionado);
 		
-		Plato_actualizado = platoServiceImpl.actualizarPlato(Plato_seleccionado);
-		
-		return Plato_actualizado;
+		return plato_actualizado;
 	}
 	
+	// eliminar plato por id
 	@DeleteMapping("/platos/{id}")
-	public void eleiminarPlato(@PathVariable(name="id")int idPlato) {
+	public void eliminarPlato(@PathVariable(name="id")int idPlato) {
 		platoServiceImpl.eliminarPlato(idPlato);
 	}
 	

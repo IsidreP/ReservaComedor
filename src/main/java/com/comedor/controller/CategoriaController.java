@@ -22,47 +22,51 @@ public class CategoriaController {
 	@Autowired
 	CategoriaServiceImpl categoriaServiceImpl;
 	
+	// listar todas categorías
 	@GetMapping("/categorias")
 	public List<Categoria> listarCategorias(){
 		return categoriaServiceImpl.listarCategorias();
 	}
 	
-	
+	// crear nueva categoría
 	@PostMapping("/categorias")
 	public Categoria salvarCategoria(@RequestBody Categoria categoria) {
 		
 		return categoriaServiceImpl.guardarCategoria(categoria);
 	}
 	
-	
+	// listar categoría por id
 	@GetMapping("/categorias/{id}")
 	public Categoria categoriaXID(@PathVariable(name="id") int id) {
 		
-		Categoria Categoria_xid= new Categoria();
-		
-		Categoria_xid=categoriaServiceImpl.categoriaXID(id);
-	
-		return Categoria_xid;
+		Categoria categoria_xid= new Categoria();
+		categoria_xid=categoriaServiceImpl.categoriaXID(id);
+		return categoria_xid;
 	}
 	
+	// actualizar categoría
 	@PutMapping("/categorias/{id}")
 	public Categoria actualizarCategoria(@PathVariable(name="id")int id,@RequestBody Categoria categoria) {
 		
-		Categoria Categoria_seleccionado= new Categoria();
-		Categoria Categoria_actualizado= new Categoria();
+		Categoria categoria_seleccionada= new Categoria();
+		Categoria categoria_actualizada= new Categoria();
 		
-		Categoria_seleccionado= categoriaServiceImpl.categoriaXID(id);
+		// obtenemos categoría de la DB
+		categoria_seleccionada= categoriaServiceImpl.categoriaXID(id);
 		
-		Categoria_seleccionado.setNombreCategoria(categoria.getNombreCategoria());
-		Categoria_seleccionado.setPlato(categoria.getPlato()); // AÑADIDO
+		// seteamos nuevos valores
+		categoria_seleccionada.setNombreCategoria(categoria.getNombreCategoria());
+		categoria_seleccionada.setPlato(categoria.getPlato()); 
 		
-		Categoria_actualizado = categoriaServiceImpl.actualizarCategoria(Categoria_seleccionado);
+		// actualizamos categoría en la DB
+		categoria_actualizada = categoriaServiceImpl.actualizarCategoria(categoria_seleccionada);
 		
-		return Categoria_actualizado;
+		return categoria_actualizada;
 	}
-	
+
+	// eliminar categoría por id
 	@DeleteMapping("/categorias/{id}")
-	public void eleiminarCategoria(@PathVariable(name="id")int id) {
+	public void eliminarCategoria(@PathVariable(name="id")int id) {
 		categoriaServiceImpl.eliminarCategoria(id);
 	}
 	

@@ -20,16 +20,19 @@ public class UsuarioController {
 	@Autowired
 	UsuarioServiceImpl usuarioServiceImpl;
 
+	// listar todos usuarios
 	@GetMapping("/usuarios")
 	public List<Usuario> listarUsuarios() {
 		return usuarioServiceImpl.listarUsuarios();
 	}
 
+	// crear nuevo usuario
 	@PostMapping("/usuarios")
 	public Usuario guardarUsuario(@RequestBody Usuario usuario) {
 		return usuarioServiceImpl.guardarUsuario(usuario);
 	}
 
+	// listar usuario por id
 	@GetMapping("/usuarios/{id}")
 	public Usuario listarUsuarioPorId(@PathVariable(name = "id") Long idUsuario) {
 
@@ -38,6 +41,7 @@ public class UsuarioController {
 		return usuarioPorId;
 	}
 
+	// actualizar usuario
 	@PutMapping("/usuarios/{id}")
 	public Usuario actualizarUsuario(@RequestBody Usuario usuario, @PathVariable(name = "id") Long idUsuario) {
 
@@ -55,11 +59,12 @@ public class UsuarioController {
 		usuarioSeleccionado.setRol(usuario.getRol());
 		usuarioSeleccionado.setPedirPlato(usuario.getPedirPlato());
 
-		// actualizamos Usuario en la DB
+		// actualizamos usuario en la DB
 		usuarioActualizado = usuarioServiceImpl.actualizarUsuario(usuarioSeleccionado);
 		return usuarioActualizado;
 	}
 
+	// eliminar usuario por id
 	@DeleteMapping("/usuarios/{id}")
 	public void eliminarUsuario(@PathVariable(name = "id") Long idUsuario) {
 		usuarioServiceImpl.eliminarUsuario(idUsuario);

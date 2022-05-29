@@ -20,16 +20,19 @@ public class PedirPlatoController {
 	@Autowired
 	 PedirPlatoServiceImpl  pedirPlatoServiceImpl;
 
+	// listar todos pedirPlato
 	@GetMapping("/pedirPlato")
 	public List<PedirPlato> listarPedirPlatos() {
 		return pedirPlatoServiceImpl.listarPedirPlato();
 	}
-
+	
+	// crear nuevo pedirPlato
 	@PostMapping("/pedirPlato")
 	public PedirPlato guardarPedirPlato(@RequestBody PedirPlato pedirPlato) {
 		return pedirPlatoServiceImpl.guardarPedirPlato(pedirPlato);
 	}
 
+	// listar pedirPlato por id
 	@GetMapping("/pedirPlato/{id}")
 	public PedirPlato listarPedirPlatoPorId(@PathVariable(name = "id") Long idPedirPlato) {
 
@@ -38,6 +41,7 @@ public class PedirPlatoController {
 		return pedirPlatoPorId;
 	}
 
+	// actualizar pedirPlato
 	@PutMapping("/pedirPlato/{id}")
 	public PedirPlato actualizarPedirPlato(@RequestBody PedirPlato pedirPlato, @PathVariable(name = "id") Long idPedirPlato) {
 
@@ -59,6 +63,7 @@ public class PedirPlatoController {
 		return pedirPlatoActualizado;
 	}
 
+	// eliminar pedirPlato por id
 	@DeleteMapping("/pedirPlato/{id}")
 	public void eliminarPedirPlato(@PathVariable(name = "id") Long idPedirPlato) {
 		pedirPlatoServiceImpl.eliminarPedirPlato(idPedirPlato);

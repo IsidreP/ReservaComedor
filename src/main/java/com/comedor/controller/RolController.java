@@ -20,42 +20,46 @@ public class RolController {
 	@Autowired
 	RolServiceImpl rolServiceImpl;
 
+	// listar todos roles
 	@GetMapping("/roles")
 	public List<Rol> listarRoles() {
 		return rolServiceImpl.listarRoles();
 	}
 
+	// crear nuevo rol
 	@PostMapping("/roles")
 	public Rol guardarRol(@RequestBody Rol rol) {
 		return rolServiceImpl.guardarRol(rol);
 	}
 
+	// listar rol por id
 	@GetMapping("/roles/{idRol}")
 	public Rol listarRolPorId(@PathVariable(name = "idRol") Long idRol) {
 
-		Rol RolPorId = new Rol();
-		RolPorId = rolServiceImpl.listarRolXID(idRol);
-		return RolPorId;
+		Rol rolPorId = new Rol();
+		rolPorId = rolServiceImpl.listarRolXID(idRol);
+		return rolPorId;
 	}
 
+	// actualizar rol
 	@PutMapping("/roles/{idRol}")
 	public Rol actualizarRol(@RequestBody Rol rol, @PathVariable(name = "idRol") Long idRol) {
 
 		Rol rolSeleccionado = new Rol();
 		Rol rolActualizado = new Rol();
 
-		// obtenemos Rol de la DB
+		// obtenemos rol de la DB
 		rolSeleccionado = rolServiceImpl.listarRolXID(idRol);
 
 		// seteamos nuevos valores
 		rolSeleccionado.setIdRol(rol.getIdRol());
 		rolSeleccionado.setNombreRol(rol.getNombreRol());
 
-		// actualizamos Rol en la DB
+		// actualizamos rol en la DB
 		rolActualizado = rolServiceImpl.actualizarRol(rolSeleccionado);
 		return rolActualizado;
 	}
-
+	// eliminar rol por id
 	@DeleteMapping("/roles/{idRol}")
 	public void eliminarRol(@PathVariable(name = "idRol") Long idRol) {
 		rolServiceImpl.eliminarRol(idRol);

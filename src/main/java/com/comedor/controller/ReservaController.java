@@ -13,24 +13,26 @@ import org.springframework.web.bind.annotation.RestController;
 import com.comedor.dto.Reserva;
 import com.comedor.service.ReservaServiceImpl;
 
-
 @RestController
 @RequestMapping("/api")
 public class ReservaController {
-	
+
 	@Autowired
 	ReservaServiceImpl reservaServiceImpl;
 
+	// listar todas reservas
 	@GetMapping("/reservas")
 	public List<Reserva> listarReservas() {
 		return reservaServiceImpl.listarReservas();
 	}
 
+	// crear nueva reserva
 	@PostMapping("/reservas")
 	public Reserva guardarReserva(@RequestBody Reserva reserva) {
 		return reservaServiceImpl.guardarReserva(reserva);
 	}
 
+	// listar reserva por id
 	@GetMapping("/reservas/{id}")
 	public Reserva listarReservaPorId(@PathVariable(name = "id") Long idReserva) {
 
@@ -39,6 +41,7 @@ public class ReservaController {
 		return reservaPorId;
 	}
 
+	// actualizar reserva
 	@PutMapping("/reservas/{id}")
 	public Reserva actualizarReserva(@RequestBody Reserva reserva, @PathVariable(name = "id") Long idReserva) {
 
@@ -60,11 +63,10 @@ public class ReservaController {
 		return reservaActualizada;
 	}
 
+	// eliminar reserva por id
 	@DeleteMapping("/reservas/{id}")
 	public void eliminarReserva(@PathVariable(name = "id") Long idReserva) {
 		reservaServiceImpl.eliminarReserva(idReserva);
 	}
-
-	
 
 }

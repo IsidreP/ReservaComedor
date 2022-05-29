@@ -20,16 +20,19 @@ public class FranjaController {
 	@Autowired
 	FranjaServiceImpl franjaServiceImpl;
 
+	// listar todas franjas
 	@GetMapping("/franjas")
 	public List<Franja> listarFranjas() {
 		return franjaServiceImpl.listarFranjas();
 	}
 
+	// crear nueva franja
 	@PostMapping("/franjas")
 	public Franja guardarFranja(@RequestBody Franja franja) {
 		return franjaServiceImpl.guardarFranja(franja);
 	}
 
+	// listar franja por id
 	@GetMapping("/franjas/{id}")
 	public Franja listarFranjaPorId(@PathVariable(name = "id") Long idFranja) {
 
@@ -38,6 +41,7 @@ public class FranjaController {
 		return franjaPorId;
 	}
 
+	// actualizar franja
 	@PutMapping("/franjas/{id}")
 	public Franja actualizarFranja(@RequestBody Franja franja, @PathVariable(name = "id") Long idFranja) {
 
@@ -59,6 +63,7 @@ public class FranjaController {
 		return franjaActualizada;
 	}
 
+	// eliminar franja por id
 	@DeleteMapping("/franjas/{id}")
 	public void eliminarFranja(@PathVariable(name = "id") Long idFranja) {
 		franjaServiceImpl.eliminarFranja(idFranja);
