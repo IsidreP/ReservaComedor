@@ -15,6 +15,11 @@ BASE DE DATOS RELACIONAL
 
 ![image](https://user-images.githubusercontent.com/89861246/169401042-e244b971-0dd7-4509-88c3-c76e8a1272f5.png)
 
+Categorias
+
+![categorias01](https://user-images.githubusercontent.com/103040138/171231516-bfa9f43c-3177-4fd3-9694-3d276f014ac8.png)
+
+
 
 
 
