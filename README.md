@@ -31,7 +31,11 @@ BASE DE DATOS RELACIONAL
 ![platos04](https://user-images.githubusercontent.com/103040138/171242168-48d9f0cd-9341-49e6-b60e-5add4473b558.png)
 ![platos05](https://user-images.githubusercontent.com/103040138/171242322-08fdd6e0-3266-45c6-b35e-04f401af2bd3.png)
 
+<strong>Usuarios</strong>
 
-
+![usuarios01](https://user-images.githubusercontent.com/103040138/171254093-ecfb68e0-4e46-45db-b113-52d18cc3a36e.png)
+![usuarios02](https://user-images.githubusercontent.com/103040138/171254142-95c09137-86fb-41ef-98ff-d1376a5583a8.png)
+![usuarios03](https://user-images.githubusercontent.com/103040138/171254165-7d09ba18-b674-4ee0-85ef-6f012b173a9e.png)
+![usuarios05](https://user-images.githubusercontent.com/103040138/171254182-12dac580-7f44-4e9e-b65b-f32b51bd0056.png)
 
 
