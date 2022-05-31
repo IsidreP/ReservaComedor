@@ -38,4 +38,11 @@ BASE DE DATOS RELACIONAL
 ![usuarios03](https://user-images.githubusercontent.com/103040138/171254165-7d09ba18-b674-4ee0-85ef-6f012b173a9e.png)
 ![usuarios05](https://user-images.githubusercontent.com/103040138/171254182-12dac580-7f44-4e9e-b65b-f32b51bd0056.png)
 
+<strong>Roles</strong>
+
+![roles01](https://user-images.githubusercontent.com/103040138/171257202-581edfce-4a2a-46c7-aa9a-615c4847c444.png)
+![roles02](https://user-images.githubusercontent.com/103040138/171257250-a00d8d90-e9cb-41ed-9a3d-00aa46e288d5.png)
+![roles03](https://user-images.githubusercontent.com/103040138/171257283-dad69770-d459-4887-a12c-d274c16af4a2.png)
+![roles05](https://user-images.githubusercontent.com/103040138/171257331-ac32dc2e-e04d-464b-b7cc-3f831becf72b.png)
+
 
