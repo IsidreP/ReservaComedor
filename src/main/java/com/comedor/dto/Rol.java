@@ -67,9 +67,9 @@ public class Rol {
 	}
 
 	// método toString
-	@Override
-	public String toString() {
-		return "Rol [idRol=" + idRol + ", nombreRol=" + nombreRol + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "Rol [idRol=" + idRol + ", nombreRol=" + nombreRol + "]";
+//	}
 	
 }

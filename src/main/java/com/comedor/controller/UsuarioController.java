@@ -2,6 +2,7 @@ package com.comedor.controller;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,16 +10,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.comedor.dto.Usuario;
 import com.comedor.service.UsuarioServiceImpl;
 
 @RestController
+@CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE })
 @RequestMapping("/api")
 public class UsuarioController {
-
+	
 	@Autowired
-	UsuarioServiceImpl usuarioServiceImpl;
+	private UsuarioServiceImpl usuarioServiceImpl;
 
 	// listar todos usuarios
 	@GetMapping("/usuarios")
@@ -31,6 +34,7 @@ public class UsuarioController {
 	public Usuario guardarUsuario(@RequestBody Usuario usuario) {
 		return usuarioServiceImpl.guardarUsuario(usuario);
 	}
+	
 
 	// listar usuario por id
 	@GetMapping("/usuarios/{id}")
@@ -52,10 +56,10 @@ public class UsuarioController {
 		usuarioSeleccionado = usuarioServiceImpl.listarUsuarioXID(idUsuario);
 
 		// seteamos nuevos valores
-		usuarioSeleccionado.setIdUsuario(usuario.getIdUsuario());
-		usuarioSeleccionado.setNombreUsuario(usuario.getNombreUsuario());
+		usuarioSeleccionado.setId(usuario.getId());
+		usuarioSeleccionado.setUsername(usuario.getUsername());
 		usuarioSeleccionado.setEmail(usuario.getEmail());
-		usuarioSeleccionado.setContrasenya(usuario.getContrasenya());
+		usuarioSeleccionado.setPassword(usuario.getPassword());
 		usuarioSeleccionado.setRol(usuario.getRol());
 		usuarioSeleccionado.setPedirPlato(usuario.getPedirPlato());
 

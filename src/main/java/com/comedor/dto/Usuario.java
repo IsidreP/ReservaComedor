@@ -21,16 +21,16 @@ public class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
-	private Long idUsuario;
+	private Long id;
 
 	@Column(name = "nombre")
-	private String nombreUsuario;
+	private String username;
 
 	@Column(name = "email")
 	private String email;
 
 	@Column(name = "contrasenya")
-	private String contrasenya;
+	private String password;
 
 	@ManyToOne
 	@JoinColumn(name = "rol")
@@ -44,31 +44,31 @@ public class Usuario {
 
 	}
 
-	public Usuario(Long idUsuario, String nombreUsuario, String email, String contrasenya, Rol rol,
+	public Usuario(Long id, String username, String email, String password, Rol rol,
 			List<PedirPlato> pedirPlato) {
 
-		this.idUsuario = idUsuario;
-		this.nombreUsuario = nombreUsuario;
+		this.id = id;
+		this.username = username;
 		this.email = email;
-		this.contrasenya = contrasenya;
+		this.password = password;
 		this.rol = rol;
 		this.pedirPlato = pedirPlato;
 	}
 
-	public Long getIdUsuario() {
-		return idUsuario;
+	public Long getId() {
+		return id;
 	}
 
-	public void setIdUsuario(Long idUsuario) {
-		this.idUsuario = idUsuario;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-	public String getNombreUsuario() {
-		return nombreUsuario;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setNombreUsuario(String nombreUsuario) {
-		this.nombreUsuario = nombreUsuario;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getEmail() {
@@ -79,12 +79,12 @@ public class Usuario {
 		this.email = email;
 	}
 
-	public String getContrasenya() {
-		return contrasenya;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setContrasenya(String contrasenya) {
-		this.contrasenya = contrasenya;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public Rol getRol() {
@@ -105,11 +105,11 @@ public class Usuario {
 		this.pedirPlato = pedirPlato;
 	}
 
-	// método toString
-	@Override
-	public String toString() {
-		return "Usuario [idUsuario=" + idUsuario + ", nombreUsuario=" + nombreUsuario + ", email=" + email
-				+ ", contrasenya=" + contrasenya + "]";
-	}
+//	// método toString
+//	@Override
+//	public String toString() {
+//		return "Usuario [id=" + id + ", username=" + username + ", email=" + email
+//				+ ", password=" + password + "]";
+//	}
 
 }
