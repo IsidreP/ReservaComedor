@@ -17,7 +17,7 @@ BASE DE DATOS RELACIONAL
 
 1. Listar según la entidad:
 
-@GetMapping("/categirías")
+@GetMapping("/categirías")<br>
 @GetMapping("/platos")
 
 
