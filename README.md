@@ -18,7 +18,49 @@ BASE DE DATOS RELACIONAL
 1. Listar según la entidad:
 
 @GetMapping("/categirías")<br>
-@GetMapping("/platos")
+@GetMapping("/platos")<br>
+@GetMapping("/usuarios")<br>
+@GetMapping("/roles")<br>
+@GetMapping("/franjas")<br>
+@GetMapping("/pedirPlato")<br>
+@GetMapping("/reservas")<br>
 
+2. Listar solo un registro:
 
+@GetMapping("/categorias/{id}")<br>
+@GetMapping("/platos/{id}")<br>
+@GetMapping("/usuarios/{id}")<br>
+@GetMapping("/roles/{idRol}")<br>
+@GetMapping("/franjas/{id}")<br>
+@GetMapping("/pedirPlato/{id}")<br>
+@GetMapping("/reservas/{id}")<br>
 
+3. Crear nuevo registro:
+
+@PostMapping("/categorias")<br>
+@PostMapping("/platos")<br>
+@PostMapping("/usuarios")<br>
+@PostMapping("/roles")<br>
+@PostMapping("/franjas")<br>
+@PostMapping("/pedirPlato")<br>
+@PostMapping("/reservas")<br>
+
+4. Acualizar registro:
+
+@PutMapping("/categorias/{id}")<br>
+@PutMapping("/platos/{id}")<br>
+@PutMapping("/usuarios/{id}")<br>
+@PutMapping("/roles/{idRol}")<br>
+@PutMapping("/franjas/{id}")<br>
+@PutMapping("/pedirPlato/{id}")<br>
+@PutMapping("/reservas/{id}")<br>
+
+5. Eliminar registro:
+
+@DeleteMapping("/categorias/{id}")<br>
+@DeleteMapping("/platos/{id}")<br>
+@DeleteMapping("/usuarios/{id}")<br>
+@DeleteMapping("/roles/{idRol}")<br>
+@DeleteMapping("/franjas/{id}")<br>
+@DeleteMapping("/pedirPlato/{id}")<br>
+@DeleteMapping("/reservas/{id}")<br>
