@@ -15,6 +15,10 @@ BASE DE DATOS RELACIONAL
 
 ![image](https://user-images.githubusercontent.com/89861246/169401042-e244b971-0dd7-4509-88c3-c76e8a1272f5.png)
 
+1. Listar según la entidad:
+
+@GetMapping("/categirías")
+@GetMapping("/platos")
 
 
 
