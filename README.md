@@ -82,3 +82,8 @@ Proyecto final bootcamp Java&amp;Angular 2022
 @DeleteMapping("/franjas/{id}")<br>
 @DeleteMapping("/pedirPlato/{id}")<br>
 @DeleteMapping("/reservas/{id}")<br>
+
+6. Registro y login:
+
+@PostMapping("/registro")
+@PostMapping("/login")
