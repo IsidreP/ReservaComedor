@@ -85,5 +85,5 @@ Proyecto final bootcamp Java&amp;Angular 2022
 
 6. Registro y login:
 
-@PostMapping("/registro")
-@PostMapping("/login")
+@PostMapping("/registro")<br>
+@PostMapping("/login")<br>
