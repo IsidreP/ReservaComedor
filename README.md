@@ -33,7 +33,12 @@ Proyecto final bootcamp Java&amp;Angular 2022
 ![image](https://user-images.githubusercontent.com/89861246/169401042-e244b971-0dd7-4509-88c3-c76e8a1272f5.png)
 
 **6. ENDPOINTS:**
-1. Listar según la entidad:
+1. Registro y login:
+
+@PostMapping("/registro")<br>
+@PostMapping("/login")<br>
+
+2. Listar según la entidad:
 
 @GetMapping("/categirías")<br>
 @GetMapping("/platos")<br>
@@ -43,7 +48,7 @@ Proyecto final bootcamp Java&amp;Angular 2022
 @GetMapping("/pedirPlato")<br>
 @GetMapping("/reservas")<br>
 
-2. Listar solo un registro:
+3. Listar solo un registro:
 
 @GetMapping("/categorias/{id}")<br>
 @GetMapping("/platos/{id}")<br>
@@ -53,7 +58,7 @@ Proyecto final bootcamp Java&amp;Angular 2022
 @GetMapping("/pedirPlato/{id}")<br>
 @GetMapping("/reservas/{id}")<br>
 
-3. Crear nuevo registro:
+4. Crear nuevo registro:
 
 @PostMapping("/categorias")<br>
 @PostMapping("/platos")<br>
@@ -63,7 +68,7 @@ Proyecto final bootcamp Java&amp;Angular 2022
 @PostMapping("/pedirPlato")<br>
 @PostMapping("/reservas")<br>
 
-4. Acualizar registro:
+5. Acualizar registro:
 
 @PutMapping("/categorias/{id}")<br>
 @PutMapping("/platos/{id}")<br>
@@ -73,7 +78,7 @@ Proyecto final bootcamp Java&amp;Angular 2022
 @PutMapping("/pedirPlato/{id}")<br>
 @PutMapping("/reservas/{id}")<br>
 
-5. Eliminar registro:
+6. Eliminar registro:
 
 @DeleteMapping("/categorias/{id}")<br>
 @DeleteMapping("/platos/{id}")<br>
@@ -83,7 +88,4 @@ Proyecto final bootcamp Java&amp;Angular 2022
 @DeleteMapping("/pedirPlato/{id}")<br>
 @DeleteMapping("/reservas/{id}")<br>
 
-6. Registro y login:
 
-@PostMapping("/registro")<br>
-@PostMapping("/login")<br>
