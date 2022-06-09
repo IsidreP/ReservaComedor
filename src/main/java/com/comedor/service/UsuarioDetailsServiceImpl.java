@@ -1,7 +1,6 @@
 package com.comedor.service;
 
-import static java.util.Collections.emptyList;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -13,12 +12,13 @@ import com.comedor.dto.Usuario;
 
 @Service
 public class UsuarioDetailsServiceImpl implements UserDetailsService {
-
+	
+	@Autowired
 	private IUsuarioDAO iUsuarioDAO;
-
-	public UsuarioDetailsServiceImpl(IUsuarioDAO iUsuarioDAO) {
-		this.iUsuarioDAO = iUsuarioDAO;
-	}
+//
+//	public UsuarioDetailsServiceImpl(IUsuarioDAO iUsuarioDAO) {
+//		this.iUsuarioDAO = iUsuarioDAO;
+//	}
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -26,7 +26,7 @@ public class UsuarioDetailsServiceImpl implements UserDetailsService {
 		if (usuario == null) {
 			throw new UsernameNotFoundException(username);
 		}
-		return new User(usuario.getUsername(), usuario.getPassword(), emptyList());
+		return new User(usuario.getUsername(), usuario.getPassword(), usuario.getAuthorities());
 	}
 
 }

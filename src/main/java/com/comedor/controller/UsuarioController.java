@@ -2,6 +2,7 @@ package com.comedor.controller;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,8 +23,7 @@ public class UsuarioController {
 	
 	@Autowired
 	private UsuarioServiceImpl usuarioServiceImpl;
-
-	// listar todos usuarios
+	
 	@GetMapping("/usuarios")
 	public List<Usuario> listarUsuarios() {
 		return usuarioServiceImpl.listarUsuarios();
