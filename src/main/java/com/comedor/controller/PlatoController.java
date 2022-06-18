@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.comedor.dto.Plato;
 import com.comedor.service.PlatoServiceImpl;
 
+@CrossOrigin
 @RestController
-@CrossOrigin(origins = "*")
 @RequestMapping("/api")
 public class PlatoController {
 
@@ -71,6 +71,7 @@ public class PlatoController {
 	}
 	
 	// eliminar plato por id
+	@CrossOrigin
 	@DeleteMapping("/platos/{id}")
 	public void eliminarPlato(@PathVariable(name="id")int idPlato) {
 		platoServiceImpl.eliminarPlato(idPlato);
