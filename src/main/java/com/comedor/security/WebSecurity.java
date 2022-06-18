@@ -64,7 +64,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
         configuration.setExposedHeaders(Arrays.asList("x-auth-token", "Authorization"));
         
 		final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-		source.registerCorsConfiguration("/**", new CorsConfiguration().applyPermitDefaultValues());
+		source.registerCorsConfiguration("/**", configuration);
 		return source;
 	}
 }
