@@ -2,7 +2,6 @@ package com.comedor.security;
 
 import static com.comedor.security.Constants.LOGIN_URL;
 import static com.comedor.security.Constants.REGISTER_URL;
-import static com.comedor.security.Constants.PLATOS_URL;
 
 import java.util.Arrays;
 
@@ -47,9 +46,6 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 		httpSecurity.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().cors().and()
 				.csrf().disable()
 				.authorizeRequests().antMatchers(HttpMethod.POST, LOGIN_URL, REGISTER_URL).permitAll()
-				.anyRequest().authenticated().and()
-				.csrf().disable()
-				.authorizeRequests().antMatchers( HttpMethod.GET, PLATOS_URL).permitAll()
 				.anyRequest().authenticated()
 				.and().addFilter(new JWTAuthenticationFilter(authenticationManager()))
 				.addFilter(new JWTAuthorizationFilter(authenticationManager()));
